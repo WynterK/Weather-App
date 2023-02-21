@@ -1,0 +1,22 @@
+if("geolocation" in navigator) {
+    navigator.geolocation.getCurrentPosition(setPosition,shoError)
+} else {
+    notificationElement.style.display ='block'
+    notificationElement.innerHTML ='<p> Browser doesnt support geolocation </p>'
+}
+
+function setPosition(position) {
+    latitude =position.coords.latitude
+    longitude =position.coords.longitude
+
+    getWeather(latitude,longitude)
+}
+locationIcon.addEventListener("click" ,function(event) {
+    console.log('hey')
+    getWeather(latitude,longitude)
+})
+
+function shoError(error) {
+    notificationElement.style.display="block"
+    notificationElement.innerHTML= '<p> ${error.message} </p>'
+    }
